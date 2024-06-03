@@ -8,7 +8,7 @@ export const AppDataSource = new DataSource({
   host: "postgres.ferris.place",
   port: 5432,
   username: "tristan-streich",
-  password: "ferris",
+  password: "ferris", // TODO: read from env var on all of these
   database: "ferrisDB",
   synchronize: true,
   logging: false,

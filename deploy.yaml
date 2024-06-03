@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: concert-list-deployment
+  labels:
+    app: concert-list
+spec:
+  selector:
+    matchLabels:
+      app: concert-list
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: concert-list
+    spec:
+      imagePullSecrets:
+      - name: ferris-registry-secret
+      containers:
+      - name: concert-list
+        image: registry.ferris.place/concert-list:latest
+        ports:
+        - containerPort: 2424
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: "250m"
+          requests:
+            memory: 128Mi
+            cpu: "80m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: concert-list
+spec:
+  selector:
+    app: concert-list
+  ports:
+    - protocol: TCP
+      port: 2424
+      targetPort: 2424
+---
+kind: IngressRoute
+apiVersion: traefik.containo.us/v1alpha1
+metadata:
+  name: concert-list
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`concerts.ferris.place`)
+      kind: Rule
+      services:
+        - name: concert-list
+          port: 2424

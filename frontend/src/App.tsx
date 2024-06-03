@@ -1,11 +1,39 @@
-import React from 'react';
+import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import ConcertDetails from './components/ConcertDetails';
+import ArtistsConcertCount from './components/ArtistsConcertCount';
+import AddShowPopup from './components/AddShowPopup';
 
 function App() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [showsUpdated, setShowsUpdated] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  const handleAddShowClick = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handlePopupClose = () => {
+    setIsPopupOpen(false);
+  };
+
+  const handleShowAdded = () => {
+    setShowsUpdated(!showsUpdated);
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
+      <button onClick={handleAddShowClick}>Add New Show</button>
+      <main>
+      {isPopupOpen && (
+        <AddShowPopup onClose={handlePopupClose} onShowAdded={handleShowAdded} />
+      )}
+        {/* <ConcertDetails refreshKey={refreshKey} /> */}
+        <ArtistsConcertCount refreshKey={refreshKey} />
+      </main>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload. Testing. Testing
@@ -18,7 +46,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
