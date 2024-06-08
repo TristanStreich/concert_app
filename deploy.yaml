@@ -19,6 +19,7 @@ spec:
       containers:
       - name: concert-list
         image: registry.ferris.place/concert-list:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 2424
         resources:
