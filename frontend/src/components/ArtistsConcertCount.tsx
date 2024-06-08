@@ -25,18 +25,29 @@ const ArtistConcertCount: React.FC<{ refreshKey: number }> = ({ refreshKey }) =>
 
   return (
     <div>
-      <h2>Artist Concert Count</h2>
+      <h1>Artists I've Seen</h1>
       {error && <p>{error}</p>}
       {data.length > 0 ? (
-        <ul>
-          {data.sort((a, b) => 
-           b.concert_count - a.concert_count || a.artist_name.localeCompare(b.artist_name)
-          ).map((item, index) => (
-            <li key={index}>
-              <strong>{item.artist_name}:</strong> {item.concert_count} concerts
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th className="artist">Artist</th>
+              <th className="dash"></th>
+              <th className="count">Show Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.sort((a, b) =>
+              b.concert_count - a.concert_count || a.artist_name.localeCompare(b.artist_name)
+            ).map((item, index) => (
+              <tr key={index}>
+                <td className="artist">{item.artist_name}</td>
+                <td className="dash">-</td>
+                <td className="count">{item.concert_count}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
         <p>No data available.</p>
       )}

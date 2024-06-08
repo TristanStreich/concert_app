@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 
 interface Artist {
@@ -10,6 +10,7 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
   const [concertDate, setConcertDate] = useState('');
   const [venue, setVenue] = useState('');
   const [artists, setArtists] = useState<Artist[]>([{ artist_name: '', role: 'headliner' }]);
+  const popupRef = useRef<HTMLDivElement>(null);
 
   const handleArtistChange = (index: number, field: string, value: string) => {
     const newArtists = [...artists];
@@ -36,9 +37,22 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
     }
   };
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="popup">
-      <div className="popup-inner">
+      <div className="popup-inner" ref={popupRef}>
         <h2>Add New Show</h2>
         <form onSubmit={handleSubmit}>
           <div>
