@@ -27,3 +27,9 @@ Now you should be able to access the site by going to http://localhost:2424
 
 
 While the `npm run dev` command is active, any time you make changes to the code it will automatically redeploy the server with your changes. You may see the site go down temporarily during that turn over.
+
+
+### Making Changes to the Frontend
+
+
+The entrypoint for the website is at [`frontend/src/App.tsx`](https://github.com/TristanStreich/concert_app/blob/main/frontend/src/App.tsx) with other relevent code being in [`frontend/src/components/`](https://github.com/TristanStreich/concert_app/tree/main/frontend/src/components)
