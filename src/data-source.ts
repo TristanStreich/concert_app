@@ -2,14 +2,15 @@ import { DataSource } from "typeorm";
 import { ConcertLineup } from "./entity/ConcertLineup";
 import { Concert } from "./entity/Concert";
 import { Artist } from "./entity/Artist";
+import argv from "./argv";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: "postgres.ferris.place",
-  port: 5432,
-  username: "tristan-streich",
-  password: "ferris", // TODO: read from env var on all of these
-  database: "ferrisDB",
+  host: argv.postgresHost,
+  port: argv.postgresPort,
+  username: argv.postgresUser,
+  password: argv.postgresPassword,
+  database: argv.postgresDbName,
   synchronize: true,
   logging: false,
   entities: [Concert, ConcertLineup, Artist],
