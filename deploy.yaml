@@ -20,6 +20,22 @@ spec:
       - name: concert-list
         image: registry.ferris.place/concert-list:latest
         imagePullPolicy: Always
+        env:
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_PORT
+            value: "5432"
+          - name: POSTGRES_USER
+            value: "tristan-streich"
+          - name: POSTGRES_DB
+            value: "ferrisDB"
+          - name: POSTGRES_HOST
+            value: "postgres.ferris.place"
+          - name: SERVER_PORT
+            value: "2424"
         ports:
         - containerPort: 2424
         resources:

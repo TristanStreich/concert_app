@@ -6,6 +6,7 @@ import { Concert } from "./entity/Concert";
 import { ConcertLineup } from "./entity/ConcertLineup";
 import { Artist } from "./entity/Artist";
 import { Role } from "./entity/RoleEnum";
+import argv from "./argv";
 
 const app = express();
 app.use(express.json());
@@ -102,7 +103,7 @@ AppDataSource.initialize()
       res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
     });
 
-    app.listen(2424, () => {
+    app.listen(argv.serverPort, () => {
       console.log("Server is running on port 2424");
     });
   })
