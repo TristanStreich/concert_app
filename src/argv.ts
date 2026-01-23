@@ -9,7 +9,6 @@ export default {
   postgresDbName: process.env.POSTGRES_DB || 'ferrisDB',
   postgresHost: process.env.POSTGRES_HOST || 'postgres.ferris.place',
   serverPort: parseInt(process.env.SERVER_PORT || '2424', 10),
-  openAiApiKey: required('OPEN_AI_API_KEY'),
 };
 
 
