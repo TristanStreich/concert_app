@@ -78,7 +78,7 @@ GROUP BY c.concert_date, c.venue
 ORDER BY c.concert_date"
 `
 
-const userPrompt = process.argv[2] ?? "Show me all the shows in 2022";
+const userPrompt = process.argv.slice(2).join(" ") ?? "Show me all the shows in 2022";
 
 async function main() {
     await AppDataSource.initialize();
