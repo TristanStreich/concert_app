@@ -1,10 +1,27 @@
 .dockerignore
 Dockerfile
 docker-compose.yml
+docker-build.sh
 
 .git
 .gitignore
+.github
 
 node_modules
 .env
 dist
+
+# Development files
+.vscode
+.idea
+*.log
+npm-debug.log*
+.DS_Store
+
+# Documentation
+README.md
+.claude
+
+# Testing
+coverage
+.nyc_output
