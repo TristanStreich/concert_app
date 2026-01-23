@@ -7,7 +7,7 @@ This directory contains Puppeteer-based screenshot tools for frontend developmen
 ### Basic Screenshot (Bottom Scroll)
 
 ```bash
-node scripts/screenshot.js /tmp/output.png
+node scripts/screenshot/screenshot.js /tmp/output.png
 ```
 
 Captures a screenshot scrolled to the bottom of the page.
@@ -15,64 +15,64 @@ Captures a screenshot scrolled to the bottom of the page.
 ### Advanced Screenshots
 
 ```bash
-node scripts/screenshot-advanced.js [options]
+node scripts/screenshot/screenshot-advanced.js [options]
 ```
 
 #### Common Examples
 
 **Scroll to bottom:**
 ```bash
-node scripts/screenshot-advanced.js --scroll=bottom --output=/tmp/bottom.png
+node scripts/screenshot/screenshot-advanced.js --scroll=bottom --output=/tmp/bottom.png
 ```
 
 **Scroll to middle:**
 ```bash
-node scripts/screenshot-advanced.js --scroll=middle --output=/tmp/middle.png
+node scripts/screenshot/screenshot-advanced.js --scroll=middle --output=/tmp/middle.png
 ```
 
 **Scroll to 75%:**
 ```bash
-node scripts/screenshot-advanced.js --scroll=75% --output=/tmp/scroll-75.png
+node scripts/screenshot/screenshot-advanced.js --scroll=75% --output=/tmp/scroll-75.png
 ```
 
 **Mobile viewport:**
 ```bash
-node scripts/screenshot-advanced.js --width=375 --height=667 --output=/tmp/mobile.png
+node scripts/screenshot/screenshot-advanced.js --width=375 --height=667 --output=/tmp/mobile.png
 ```
 
 **Tablet viewport:**
 ```bash
-node scripts/screenshot-advanced.js --width=768 --height=1024 --output=/tmp/tablet.png
+node scripts/screenshot/screenshot-advanced.js --width=768 --height=1024 --output=/tmp/tablet.png
 ```
 
 **Hover over button:**
 ```bash
-node scripts/screenshot-advanced.js --hover=.add-show-button --output=/tmp/hover.png
+node scripts/screenshot/screenshot-advanced.js --hover=.add-show-button --output=/tmp/hover.png
 ```
 
 **Click element then capture:**
 ```bash
-node scripts/screenshot-advanced.js --click=.add-show-button --output=/tmp/after-click.png
+node scripts/screenshot/screenshot-advanced.js --click=.add-show-button --output=/tmp/after-click.png
 ```
 
 **Full page screenshot:**
 ```bash
-node scripts/screenshot-advanced.js --fullpage --output=/tmp/fullpage.png
+node scripts/screenshot/screenshot-advanced.js --fullpage --output=/tmp/fullpage.png
 ```
 
 **Capture specific element only:**
 ```bash
-node scripts/screenshot-advanced.js --element=.artist-list-wrapper --output=/tmp/element.png
+node scripts/screenshot/screenshot-advanced.js --element=.artist-list-wrapper --output=/tmp/element.png
 ```
 
 **Wait longer for slow pages:**
 ```bash
-node scripts/screenshot-advanced.js --wait=5000 --output=/tmp/slow-page.png
+node scripts/screenshot/screenshot-advanced.js --wait=5000 --output=/tmp/slow-page.png
 ```
 
 **Combine multiple options:**
 ```bash
-node scripts/screenshot-advanced.js \
+node scripts/screenshot/screenshot-advanced.js \
   --width=375 \
   --height=667 \
   --scroll=bottom \

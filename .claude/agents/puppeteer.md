@@ -53,7 +53,7 @@ The puppeteer agent has access to:
 
 ## Base Screenshot Script
 
-The agent uses `scripts/screenshot.js` as a base and can modify or extend it.
+The agent uses `scripts/screenshot/screenshot.js` as a base and can modify or extend it.
 
 Current capabilities in base script:
 - Navigate to http://localhost:2424
