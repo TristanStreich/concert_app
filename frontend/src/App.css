@@ -21,6 +21,10 @@ table {
   border-collapse: collapse;
 }
 
+.artist-list-wrapper {
+  padding-bottom: 80px;
+}
+
 th,
 td {
   padding: 0.2em 5px;
@@ -34,9 +38,10 @@ tbody {
   display: table-row-group;
 }
 
-thead tbody tr {
+thead tr,
+tbody tr {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 3fr auto 1fr;
   align-items: center;
 }
 
