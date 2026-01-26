@@ -12,7 +12,7 @@
     "build:frontend": "npm run build -w frontend",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:backend": "nodemon src/index.ts",
-    "dev:frontend": "chokidar 'frontend/src/**/*' -c 'npm run build:frontend'",
+    "dev:frontend": "chokidar 'frontend/src/**/*' --initial -c 'npm run build:frontend'",
     "gpt": "ts-node --swc scripts/gpt.ts"
   },
   "keywords": [],
