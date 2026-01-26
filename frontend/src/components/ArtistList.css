@@ -28,6 +28,29 @@
   line-height: 32px;
 }
 
+/* Mobile: allow rows to expand when text wraps */
+@media (max-width: 480px) {
+  .artist-row {
+    height: auto !important;
+    min-height: 32px;
+    line-height: 24px;
+    padding: 4px 0;
+    align-items: flex-start;
+  }
+
+  .artist-name {
+    flex: 1;
+    padding-right: 12px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .artist-tally {
+    flex-shrink: 0;
+    line-height: 24px;
+  }
+}
+
 .artist-name {
   font-family: var(--font-marker);
   font-size: 18px;

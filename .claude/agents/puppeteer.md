@@ -227,6 +227,36 @@ Claude: I'll use the puppeteer agent to capture a screenshot with the hover stat
 6. **Return absolute paths:** Always use `/tmp/` prefix for screenshots
 7. **Log clearly:** Always output "Screenshot saved to {path}" for clarity
 
+## Mobile Testing
+
+Mobile screenshot verification should be part of standard visual verification for all frontend changes.
+
+### Common Mobile Viewport Sizes
+
+| Device | Width | Height | Use Case |
+|--------|-------|--------|----------|
+| iPhone SE | 375 | 667 | Standard mobile baseline |
+| iPhone 14 Pro | 393 | 852 | Modern iPhone |
+| Pixel 7 | 412 | 915 | Android baseline |
+| iPad Mini | 768 | 1024 | Tablet |
+
+### Quick Mobile Screenshot Commands
+
+```bash
+# Standard mobile (375x667)
+node scripts/screenshot/screenshot-advanced.js --width=375 --height=667 --output=/tmp/mobile.png
+
+# Larger mobile (412x915)
+node scripts/screenshot/screenshot-advanced.js --width=412 --height=915 --output=/tmp/mobile-large.png
+```
+
+### Why Mobile Testing Matters
+
+- **Text wrapping:** Long text that fits on desktop may wrap on mobile
+- **Fixed heights:** CSS with `height: 32px` can cause overlap when text wraps; prefer `min-height`
+- **Touch targets:** Elements need adequate spacing for touch interaction
+- **Horizontal overflow:** Wide content may require horizontal scrolling
+
 ## Future Enhancements
 
 Potential additions for this agent:
