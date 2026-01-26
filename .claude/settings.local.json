@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(node /Users/tristanstreich/concert_app/scripts/screenshot/screenshot.js:*)",
+      "Bash(node /Users/tristanstreich/concert_app/scripts/screenshot/screenshot-advanced.js:*)"
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: var(--paper-color);
+}
+
+.header-title {
+  font-family: var(--font-rock);
+  font-size: 20px;
+  color: var(--brown);
+  text-align: center;
+  flex: 1;
+  margin: 0;
+}
+
+.header-icon-btn {
+  background: none;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-icon-btn .material-symbols-outlined {
+  font-size: 28px;
+  color: var(--brown);
+}
