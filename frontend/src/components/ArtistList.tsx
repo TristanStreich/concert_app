@@ -19,10 +19,13 @@ const ArtistList: React.FC<ArtistListProps> = ({ refreshKey }) => {
     const fetchArtists = async () => {
       try {
         const response = await axios.get('/artist-concert-count');
-        // Sort by concert count descending
+        // Sort by concert count descending, then alphabetically by name
         const sorted = response.data.sort(
-          (a: ArtistCount, b: ArtistCount) =>
-            parseInt(b.concert_count) - parseInt(a.concert_count)
+          (a: ArtistCount, b: ArtistCount) => {
+            const countDiff = parseInt(b.concert_count) - parseInt(a.concert_count);
+            if (countDiff !== 0) return countDiff;
+            return a.artist_name.localeCompare(b.artist_name);
+          }
         );
         setArtists(sorted);
       } catch (error) {

@@ -9,6 +9,7 @@
 .header-title {
   font-family: var(--font-rock);
   font-size: 20px;
+  line-height: 1.1;
   color: var(--brown);
   text-align: center;
   flex: 1;
