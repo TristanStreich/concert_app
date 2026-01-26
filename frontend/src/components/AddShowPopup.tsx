@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './AddShowPopup.css';
+import AutocompleteInput from './AutocompleteInput';
 
 interface Artist {
   artist_name: string;
@@ -10,8 +11,16 @@ interface Artist {
 const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> = ({ onClose, onShowAdded }) => {
   const [concertDate, setConcertDate] = useState('');
   const [venue, setVenue] = useState('');
+  const [venues, setVenues] = useState<string[]>([]);
   const [artists, setArtists] = useState<Artist[]>([{ artist_name: '', role: 'headliner' }]);
   const popupRef = useRef<HTMLDivElement>(null);
+
+  // Fetch venues on mount
+  useEffect(() => {
+    axios.get('/venues')
+      .then(res => setVenues(res.data))
+      .catch(err => console.error('Error fetching venues:', err));
+  }, []);
 
   const handleArtistChange = (index: number, field: string, value: string) => {
     const newArtists = [...artists];
@@ -67,10 +76,11 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
           </div>
           <div>
             <label>Venue:</label>
-            <input
-              type="text"
+            <AutocompleteInput
               value={venue}
-              onChange={(e) => setVenue(e.target.value)}
+              onChange={setVenue}
+              suggestions={venues}
+              placeholder="Start typing venue name..."
               required
             />
           </div>

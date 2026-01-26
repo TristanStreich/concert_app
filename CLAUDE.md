@@ -44,3 +44,6 @@ For frontend development with visual feedback, use the **frontend-dev** skill wh
 - Guides through iterative development with before/after screenshots
 
 **Screenshots:** ALWAYS delegate to the **puppeteer agent** (Task tool with subagent_type=puppeteer) for ANY screenshot task. This saves context by using a subagent. Never run screenshot scripts directly.
+
+## TODO
+- [ ] Create a separate dev/test database so changes can be tested without affecting prod DB
