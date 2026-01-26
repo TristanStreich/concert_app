@@ -1,6 +1,6 @@
 ---
 name: puppeteer
-description: Browser automation and screenshot capture specialist. Use proactively when screenshots with interactions (clicking, hovering), specific scroll positions, multiple viewport sizes, or full-page captures are needed.
+description: ALWAYS use this agent for ANY screenshot task. This saves context by delegating to a subagent. Supports basic screenshots, interactions (clicking, hovering), scroll positions, multiple viewport sizes, and full-page captures.
 tools: Read, Write, Edit, Bash
 model: haiku
 ---

@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm run dev:*)",
       "Bash(node /Users/tristanstreich/concert_app/scripts/screenshot/screenshot.js:*)",
-      "Bash(node /Users/tristanstreich/concert_app/scripts/screenshot/screenshot-advanced.js:*)"
+      "Bash(node /Users/tristanstreich/concert_app/scripts/screenshot/screenshot-advanced.js:*)",
+      "Bash(node /tmp/desktop-screenshot.js:*)",
+      "Bash(node scripts/screenshot/screenshot-advanced.js:*)"
     ]
   }
 }

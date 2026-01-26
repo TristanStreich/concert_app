@@ -23,7 +23,7 @@ This project has specialized skills and agents to help with development:
 - **frontend-dev** (@.claude/skills/frontend-dev.md) - Frontend development workflow with visual feedback using screenshots
 
 ### Agents
-- **puppeteer** (@.claude/agents/puppeteer.md) - Master of browser automation and screenshot capture with advanced manipulation (scrolling, clicking, hovering, multi-viewport testing)
+- **puppeteer** (@.claude/agents/puppeteer.md) - **ALWAYS use this agent for ANY screenshot task.** Delegates screenshot work to a subagent to save context. Supports scrolling, clicking, hovering, and multi-viewport testing.
 
 # Goals
 ## Your job
@@ -35,7 +35,7 @@ Refer to https://code.claude.com/docs/en/best-practices for how to do that
 - Backend: nodemon auto-restarts on TypeScript changes
 - Frontend: chokidar rebuilds on React file changes (~8 second rebuild time)
 - Server runs on port 2424 (configurable via `SERVER_PORT` env var)
-- **Mobile verification:** Always test visual changes at mobile viewport (375x667) in addition to desktop. Use `node scripts/screenshot/screenshot-advanced.js --width=375 --height=667 --output=/tmp/mobile.png`
+- **Mobile verification:** Always test visual changes at mobile viewport (375x667) in addition to desktop. Use the **puppeteer agent** for all screenshots.
 
 ### Frontend Development Workflow
 For frontend development with visual feedback, use the **frontend-dev** skill which:
@@ -43,4 +43,4 @@ For frontend development with visual feedback, use the **frontend-dev** skill wh
 - Sets up screenshot-based feedback loop using Puppeteer
 - Guides through iterative development with before/after screenshots
 
-For advanced screenshot needs (scroll positions, interactions, multiple viewports), delegate to the **puppeteer** agent.
+**Screenshots:** ALWAYS delegate to the **puppeteer agent** (Task tool with subagent_type=puppeteer) for ANY screenshot task. This saves context by using a subagent. Never run screenshot scripts directly.
