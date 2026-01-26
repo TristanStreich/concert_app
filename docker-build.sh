@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.3.0
+VERSION=0.3.1
 
 DOCKER_NAME=registry.ferris.place/concert-list
 
