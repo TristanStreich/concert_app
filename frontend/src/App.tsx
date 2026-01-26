@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import './App.css';
-import ArtistsConcertCount from './components/ArtistsConcertCount';
+import Header from './components/Header';
+import StatsCards from './components/StatsCards';
+import ArtistList from './components/ArtistList';
+import BottomNav from './components/BottomNav';
 import AddShowPopup from './components/AddShowPopup';
 
 function App() {
@@ -20,11 +23,11 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <main>
-        <ArtistsConcertCount refreshKey={refreshKey} />
-      </main>
-      <button className="add-show-button" onClick={handleAddShowClick}><strong>+</strong></button>
+    <div className="App paper-texture">
+      <Header />
+      <StatsCards refreshKey={refreshKey} />
+      <ArtistList refreshKey={refreshKey} />
+      <BottomNav onAddClick={handleAddShowClick} />
       {isPopupOpen && (
         <AddShowPopup onClose={handlePopupClose} onShowAdded={handleShowAdded} />
       )}

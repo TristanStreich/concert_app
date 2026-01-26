@@ -60,6 +60,26 @@ AppDataSource.initialize()
       }
     });
 
+    // Stats endpoint for total gigs and unique venues
+    app.get('/stats', async (req, res) => {
+      try {
+        const totalGigs = await AppDataSource.getRepository(Concert).count();
+        const venueResult = await AppDataSource
+          .createQueryBuilder()
+          .select('COUNT(DISTINCT venue)', 'count')
+          .from('concert', 'c')
+          .getRawOne();
+
+        res.json({
+          totalGigs,
+          uniqueVenues: parseInt(venueResult?.count || '0', 10)
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      }
+    });
+
     app.post('/add-show', async (req, res) => {
       const { concertDate, venue, artists } = req.body;
     

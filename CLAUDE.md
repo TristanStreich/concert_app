@@ -35,6 +35,7 @@ Refer to https://code.claude.com/docs/en/best-practices for how to do that
 - Backend: nodemon auto-restarts on TypeScript changes
 - Frontend: chokidar rebuilds on React file changes (~8 second rebuild time)
 - Server runs on port 2424 (configurable via `SERVER_PORT` env var)
+- **Mobile verification:** Always test visual changes at mobile viewport (375x667) in addition to desktop. Use `node scripts/screenshot/screenshot-advanced.js --width=375 --height=667 --output=/tmp/mobile.png`
 
 ### Frontend Development Workflow
 For frontend development with visual feedback, use the **frontend-dev** skill which:

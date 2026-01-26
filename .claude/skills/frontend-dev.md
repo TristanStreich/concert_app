@@ -53,10 +53,19 @@ Always verify at multiple scroll positions if the change affects layout:
 - Middle (if applicable)
 - Bottom of page
 
-Test different viewport sizes if needed:
-- Desktop: 1920x1080
-- Tablet: 768x1024
-- Mobile: 375x667
+**Required:** Test at multiple viewport sizes for every visual change:
+- Desktop: 1280x800 or 1920x1080
+- Mobile: 375x667 (iPhone SE/standard)
+
+Mobile verification is mandatory because:
+- Text wrapping behavior differs significantly
+- Fixed heights can cause overlapping content on mobile
+- Touch targets need adequate spacing
+
+Use the advanced screenshot tool for quick mobile verification:
+```bash
+node scripts/screenshot/screenshot-advanced.js --width=375 --height=667 --output=/tmp/mobile.png
+```
 
 ## Tips
 

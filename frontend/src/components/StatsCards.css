@@ -1,0 +1,30 @@
+.stats-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 16px;
+  margin-bottom: 10px;
+}
+
+.stat-card {
+  background-color: var(--paper-color);
+  border: 3px dashed var(--brown);
+  border-radius: 8px;
+  padding: 16px 24px;
+  text-align: center;
+  min-width: 120px;
+}
+
+.stat-number {
+  font-family: var(--font-marker);
+  font-size: 48px;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-handwritten);
+  font-size: 18px;
+  color: var(--brown);
+  margin-top: 4px;
+}

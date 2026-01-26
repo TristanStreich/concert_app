@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
+import './AddShowPopup.css';
 
 interface Artist {
   artist_name: string;
@@ -76,7 +77,7 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
           <div>
             <label>Artists:</label>
             {artists.map((artist, index) => (
-              <div key={index}>
+              <div key={index} className="artist-entry">
                 <input
                   type="text"
                   placeholder="Artist Name"
@@ -93,10 +94,12 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
                 </select>
               </div>
             ))}
-            <button type="button" onClick={addArtist}>Add Artist</button>
+            <button type="button" className="add-artist-btn" onClick={addArtist}>+ Add Artist</button>
           </div>
-          <button type="submit">Add Show</button>
-          <button type="button" onClick={onClose}>Cancel</button>
+          <div className="popup-actions">
+            <button type="button" onClick={onClose}>Cancel</button>
+            <button type="submit">Add Show</button>
+          </div>
         </form>
       </div>
     </div>
