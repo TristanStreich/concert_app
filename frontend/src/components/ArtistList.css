@@ -7,22 +7,25 @@
   font-family: var(--font-rock);
   font-size: 18px;
   color: var(--brown);
-  margin-bottom: 16px;
+  height: 32px;
+  line-height: 32px;
+  margin-bottom: 0;
   text-align: center;
 }
 
 .artist-list-content {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0;
+  padding-top: 10px;
 }
 
 .artist-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid var(--paper-line-color);
+  align-items: baseline;
+  height: 32px;
+  line-height: 32px;
 }
 
 .artist-name {

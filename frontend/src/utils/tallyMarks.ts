@@ -13,11 +13,11 @@ export function toTallyMarks(count: number): string {
   const parts: string[] = [];
 
   for (let i = 0; i < groups; i++) {
-    parts.push('|||||');
+    parts.push('IIIII');
   }
 
   if (remainder > 0) {
-    parts.push('|'.repeat(remainder));
+    parts.push('I'.repeat(remainder));
   }
 
   return parts.join(' ');
