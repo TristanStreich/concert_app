@@ -32,6 +32,12 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
     setArtists([...artists, { artist_name: '', role: 'opener' }]);
   };
 
+  const removeArtist = () => {
+    if (artists.length > 1) {
+      setArtists(artists.slice(0, -1));
+    }
+  };
+
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
@@ -104,7 +110,12 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
                 </select>
               </div>
             ))}
-            <button type="button" className="add-artist-btn" onClick={addArtist}>+ Add Artist</button>
+            <div className="artist-buttons">
+              <button type="button" className="add-artist-btn" onClick={addArtist}>+ Add Artist</button>
+              {artists.length > 1 && (
+                <button type="button" className="remove-artist-btn" onClick={removeArtist}>- Remove</button>
+              )}
+            </div>
           </div>
           <div className="popup-actions">
             <button type="button" onClick={onClose}>Cancel</button>

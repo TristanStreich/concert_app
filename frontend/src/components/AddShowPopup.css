@@ -19,7 +19,6 @@
   max-width: 90%;
   border: 3px dashed var(--brown);
   box-shadow: 8px 8px 0 rgba(101, 48, 40, 0.2);
-  transform: rotate(-1deg);
 }
 
 .popup-inner h2 {
@@ -57,7 +56,7 @@
   border-radius: 6px;
   background: rgba(255, 255, 255, 0.7);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 16px;
   color: var(--brown);
 }
 
@@ -114,8 +113,13 @@
   flex: 1;
 }
 
-.add-artist-btn {
-  align-self: flex-start;
+.artist-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.add-artist-btn,
+.remove-artist-btn {
   padding: 6px 12px !important;
   font-size: 12px !important;
 }
