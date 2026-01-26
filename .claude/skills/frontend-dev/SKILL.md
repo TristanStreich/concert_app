@@ -1,3 +1,8 @@
+---
+name: frontend-dev
+description: Frontend development workflow with visual feedback using screenshots
+---
+
 # Frontend Development Skill
 
 This skill helps you develop and iterate on the React frontend with visual feedback.
@@ -34,7 +39,7 @@ Wait 5 seconds and verify the server started successfully:
 
 ### Step 2: Establish Screenshot Capability
 
-Use the puppateer agent to capture screenshots for you (see `.claude/agents/puppeteer.md`)
+Use the puppeteer agent to capture screenshots for you (see `.claude/agents/puppeteer.md`)
 
 ### Step 3: Visual Feedback Loop
 
