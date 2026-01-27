@@ -80,6 +80,22 @@ AppDataSource.initialize()
       }
     });
 
+    // Get all unique venue names for autocomplete
+    app.get('/venues', async (req, res) => {
+      try {
+        const result = await AppDataSource
+          .createQueryBuilder()
+          .select('DISTINCT venue', 'venue')
+          .from('concert', 'c')
+          .orderBy('venue', 'ASC')
+          .getRawMany();
+        res.json(result.map(r => r.venue));
+      } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+      }
+    });
+
     app.post('/add-show', async (req, res) => {
       const { concertDate, venue, artists } = req.body;
     

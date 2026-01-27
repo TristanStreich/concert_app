@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './AddShowPopup.css';
+import AutocompleteInput from './AutocompleteInput';
 
 interface Artist {
   artist_name: string;
@@ -10,8 +11,16 @@ interface Artist {
 const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> = ({ onClose, onShowAdded }) => {
   const [concertDate, setConcertDate] = useState('');
   const [venue, setVenue] = useState('');
+  const [venues, setVenues] = useState<string[]>([]);
   const [artists, setArtists] = useState<Artist[]>([{ artist_name: '', role: 'headliner' }]);
   const popupRef = useRef<HTMLDivElement>(null);
+
+  // Fetch venues on mount
+  useEffect(() => {
+    axios.get('/venues')
+      .then(res => setVenues(res.data))
+      .catch(err => console.error('Error fetching venues:', err));
+  }, []);
 
   const handleArtistChange = (index: number, field: string, value: string) => {
     const newArtists = [...artists];
@@ -21,6 +30,12 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
 
   const addArtist = () => {
     setArtists([...artists, { artist_name: '', role: 'opener' }]);
+  };
+
+  const removeArtist = () => {
+    if (artists.length > 1) {
+      setArtists(artists.slice(0, -1));
+    }
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
@@ -67,10 +82,11 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
           </div>
           <div>
             <label>Venue:</label>
-            <input
-              type="text"
+            <AutocompleteInput
               value={venue}
-              onChange={(e) => setVenue(e.target.value)}
+              onChange={setVenue}
+              suggestions={venues}
+              placeholder="Start typing venue name..."
               required
             />
           </div>
@@ -94,7 +110,12 @@ const AddShowPopup: React.FC<{ onClose: () => void; onShowAdded: () => void }> =
                 </select>
               </div>
             ))}
-            <button type="button" className="add-artist-btn" onClick={addArtist}>+ Add Artist</button>
+            <div className="artist-buttons">
+              <button type="button" className="add-artist-btn" onClick={addArtist}>+ Add Artist</button>
+              {artists.length > 1 && (
+                <button type="button" className="remove-artist-btn" onClick={removeArtist}>- Remove</button>
+              )}
+            </div>
           </div>
           <div className="popup-actions">
             <button type="button" onClick={onClose}>Cancel</button>
