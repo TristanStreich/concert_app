@@ -33,3 +33,10 @@ While the `npm run dev` command is active, any time you make changes to the code
 
 
 The entrypoint for the website is at [`frontend/src/App.tsx`](https://github.com/TristanStreich/concert_app/blob/main/frontend/src/App.tsx) with other relevent code being in [`frontend/src/components/`](https://github.com/TristanStreich/concert_app/tree/main/frontend/src/components)
+
+
+## Todo:
+- [ ] fix artist sort order to no include the or la or other articles
+- [ ] add more users. add user info to database schema so each user can have their own data
+- [ ] add chatbot interface to ask questions and talk about the data
+- [ ] set up dev database instance so during dev we cannot break prod
